@@ -7,15 +7,24 @@
 
 import SwiftUI
 
+struct buttonPressedView : View {
+    let test :Int
+    var body : some View {
+        Text("The number is \(test)")
+    }
+    
+    init(test: Int) {
+        self.test = test
+    }
+}
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            NavigationLink("TAPm"){
+                buttonPressedView(test: 25)
+            }
         }
-        .padding()
     }
 }
 
