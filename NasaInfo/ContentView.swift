@@ -14,16 +14,21 @@ struct student : Hashable {
 }
 
 struct ContentView: View {
+    let students  = [
+        student(name: "Alice", age: 20),
+        student(name: "Bob", age: 22),
+        student(name: "Charlie", age: 21)
+    ]
     var body: some View {
         NavigationStack {
             
-            List(0..<100){
+            List(students, id: \._id){
                 i in
-                NavigationLink("Press \(i)", value: i)
+                NavigationLink("Select \(i.name)", value: i)
             }
-            .navigationDestination(for: Int.self) {
+            .navigationDestination(for: student.self) {
                 k in
-                Text("You selected \(k)")
+                Text("You selected \(k._id) and the name is \(k.name) and age is \(k.age)")
             }
         }
     }
