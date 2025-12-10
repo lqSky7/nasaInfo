@@ -7,22 +7,23 @@
 
 import SwiftUI
 
-struct buttonPressedView : View {
-    let test :Int
-    var body : some View {
-        Text("The number is \(test)")
-    }
-    
-    init(test: Int) {
-        self.test = test
-    }
+struct student : Hashable {
+    let _id = UUID()
+    let name : String
+    let age  : Int8
 }
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack{
-            NavigationLink("TAPm"){
-                buttonPressedView(test: 25)
+        NavigationStack {
+            
+            List(0..<100){
+                i in
+                NavigationLink("Press \(i)", value: i)
+            }
+            .navigationDestination(for: Int.self) {
+                k in
+                Text("You selected \(k)")
             }
         }
     }
