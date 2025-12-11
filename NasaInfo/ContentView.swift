@@ -7,8 +7,37 @@
 
 import SwiftUI
 
-struct student : Hashable {
-    let _id = UUID()
+@Observable
+class pathSaver {
+    var path : NavigationPath{
+        didSet{
+           save()
+        }
+    }
+    let savedPath = URL.documentsDirectory.appending(path: "PATHKEY")
+    init(){
+        if let data = try? Data(contentsOf: savedPath) {
+            if let decoded = try? JSONDecoder().decode(NavigationPath.CodableRepresentation.self, from: data){
+                path = NavigationPath(decoded)
+                return
+            }
+        }
+        path = NavigationPath()
+    }
+    
+    func save(){
+        guard let representedData = path.codable else { return }
+        do {
+            let data = try JSONEncoder().encode(representedData)
+            try data.write(to: savedPath)
+        } catch {
+            print("FAILED")
+        }
+    }
+}
+
+struct student : Hashable, Decodable {
+    var _id = UUID()
     let name : String
     let age  : Int8
 }
@@ -19,8 +48,11 @@ struct ContentView: View {
         student(name: "Bob", age: 22),
         student(name: "Charlie", age: 21)
     ]
+    
+    @State var pathStore = pathSaver()
+    
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $pathStore.path){
             List {
                 ForEach(students, id: \._id){
                     i in
@@ -35,9 +67,22 @@ struct ContentView: View {
             .navigationTitle("MAIN SCREEN")
             .navigationDestination(for: Int.self) { l in
                     Text("Hello \(l)")
+                Button ("number append button"){
+                    pathStore.path.append(55)
+                }
+                
+                Button("GO back to home") {
+                    pathStore.path = NavigationPath()
+                }
                     .navigationTitle("SIDE SCREEN 1")
             }
             .navigationDestination(for: student.self) { stu in
+                Button ("Append button"){
+                    pathStore.path.append(student(name: "nigs", age: 12))
+                }
+                Button ("BACK to home button"){
+                    pathStore.path = NavigationPath()
+                }
                 Text("student details: \(stu.name), \(stu._id)")
             }
             
