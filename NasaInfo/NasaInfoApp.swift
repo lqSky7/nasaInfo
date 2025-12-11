@@ -11,6 +11,7 @@ import SwiftUI
 struct NasaInfoApp: App {
     var body: some Scene {
         WindowGroup {
+            
             ContentView()
         }
     }
