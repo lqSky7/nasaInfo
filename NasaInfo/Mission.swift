@@ -15,8 +15,12 @@ struct misson : Identifiable, Codable {
     var id : Int
     var description: String
     var crew : [crewrole]
-    var launchDate: String?
+    var launchDate: Date?
     
     var displayName : String { "Apollo \(id)" }
     var imageName : String { "apollo\(id)" }
+    
+    var formattedLaunchDate : String {
+        launchDate?.formatted(date: .abbreviated, time:.omitted) ?? "ts didnt happen"
+    }
 }

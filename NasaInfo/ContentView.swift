@@ -26,9 +26,18 @@ var body: some View{
                                     Text(mission.displayName)
                                         .foregroundStyle(.primary)
                                         .font(.headline)
+                                    Text(mission.formattedLaunchDate)
+                                        
                                         
                                 }
+                                
                             }
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(Color.primary, lineWidth: 0.2)
+                                )
                         }
                     }
                 }

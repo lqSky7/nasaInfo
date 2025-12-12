@@ -17,8 +17,12 @@ extension Bundle {
         else {
             fatalError("Could not Find valid Data") // file is corrupted/0 bytes in size.
         }
+        let customDecoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "y-MM-dd"
+        customDecoder.dateDecodingStrategy = .formatted(formatter)
         
-        guard let decodedData = try? JSONDecoder().decode(T.self, from: dataFromUrl)
+        guard let decodedData = try? customDecoder.decode(T.self, from: dataFromUrl)
             else {
             fatalError("Could not decode data")
         }
