@@ -16,4 +16,7 @@ struct misson : Identifiable, Codable {
     var description: String
     var crew : [crewrole]
     var launchDate: String?
+    
+    var displayName : String { "Apollo \(id)" }
+    var imageName : String { "apollo\(id)" }
 }
