@@ -22,11 +22,18 @@ var body: some View{
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 100, height: 100)
+                                VStack{
+                                    Text(mission.displayName)
+                                        .foregroundStyle(.primary)
+                                        .font(.headline)
+                                        
+                                }
                             }
                         }
                     }
                 }
             }
+            .navigationTitle("MoonShot")
         }
     }
 }
