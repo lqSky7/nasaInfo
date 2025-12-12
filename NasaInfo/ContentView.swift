@@ -6,8 +6,8 @@ struct ContentView : View {
     ]
     
     var body: some View {
-        ScrollView{
-            LazyVGrid(columns: gview)
+        ScrollView(.horizontal){
+            LazyHGrid(rows: gview)
             {
                 ForEach(0..<1000){
                     k in
