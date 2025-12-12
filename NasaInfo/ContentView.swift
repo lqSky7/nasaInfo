@@ -22,11 +22,13 @@ var body: some View{
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 100, height: 100)
+                                        .padding()
                                 VStack{
                                     Text(mission.displayName)
-                                        .foregroundStyle(.primary)
+                                        .foregroundStyle(Color.primary.opacity(0.8))
                                         .font(.headline)
                                     Text(mission.formattedLaunchDate)
+                                        .foregroundStyle(Color.primary.opacity(0.5))
                                         
                                         
                                 }
@@ -35,14 +37,15 @@ var body: some View{
                                 .padding()
                                 .frame(maxWidth: .infinity)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 20)
+                                    RoundedRectangle(cornerRadius: 24)
                                         .stroke(Color.primary, lineWidth: 0.2)
                                 )
                         }
                     }
-                }
+                }.padding([.horizontal, .bottom])
             }
             .navigationTitle("MoonShot")
+            .preferredColorScheme(.dark)
         }
     }
 }
