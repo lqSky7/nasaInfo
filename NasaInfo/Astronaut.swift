@@ -8,7 +8,7 @@
 import Foundation
 
 struct Astronaut : Codable, Identifiable {
-    let name : String
-    let Description : String
     let id : String
+    let name : String
+    let description : String
 }
