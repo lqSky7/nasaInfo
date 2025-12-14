@@ -14,7 +14,7 @@ var body: some View{
                         ForEach(missonInstance) {
                             mission in
                             NavigationLink {
-                                missionView(missionInstance: mission)
+                                missionView(missionInstance: mission, astrInstanceArray: astronautInstance)
                             }
                             label: {
                                 VStack{

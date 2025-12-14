@@ -9,6 +9,8 @@ import SwiftUI
 
 struct missionView: View {
     let missionInstance : misson
+    let astrInstanceArray : [String : Astronaut]
+    
     var body: some View {
         ScrollView{
             VStack{
@@ -36,7 +38,9 @@ struct missionView: View {
 
 #Preview {
     let missions: [misson] = Bundle.main.getDataFromBundle(filename: "missions.json")
+    let astrInstanceArray: [String: Astronaut] = Bundle.main.getDataFromBundle(filename: "ast.json")
 
-    missionView(missionInstance: missions[0])
-        .preferredColorScheme(.dark)
+    missionView(missionInstance: missions[0], astrInstanceArray: astrInstanceArray)
+            .preferredColorScheme(.dark)
+
 }
