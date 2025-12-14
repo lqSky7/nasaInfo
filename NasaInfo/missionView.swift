@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct missionView: View {
     let missionInstance : misson
     struct crewStruct : Identifiable {
@@ -29,6 +28,7 @@ struct missionView: View {
                         width, axis in
                         return width*0.6
                     }
+                  
             }
             VStack(alignment: .leading) {
                 Text("Mission Highlights")

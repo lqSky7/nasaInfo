@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6A4441652EEEED5200D4F442 /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = 6A4441642EEEED5200D4F442 /* Glur */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		6AC9B1AA2EE9D65100E54B9B /* NasaInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A4441652EEEED5200D4F442 /* Glur in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = NasaInfo;
 			packageProductDependencies = (
+				6A4441642EEEED5200D4F442 /* Glur */,
 			);
 			productName = NasaInfo;
 			productReference = 6AC9B1AA2EE9D65100E54B9B /* NasaInfo.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 6AC9B1A12EE9D65100E54B9B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6A4441632EEEED5200D4F442 /* XCLocalSwiftPackageReference "../../../Downloads/Glur-1.1" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6AC9B1AB2EE9D65100E54B9B /* Products */;
 			projectDirPath = "";
@@ -336,6 +345,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		6A4441632EEEED5200D4F442 /* XCLocalSwiftPackageReference "../../../Downloads/Glur-1.1" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../../Downloads/Glur-1.1";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6A4441642EEEED5200D4F442 /* Glur */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Glur;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6AC9B1A22EE9D65100E54B9B /* Project object */;
 }

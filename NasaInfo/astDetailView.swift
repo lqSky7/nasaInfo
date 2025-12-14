@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Glur
 
 struct astDetailView: View {
     let astronautName : String
@@ -29,9 +30,17 @@ struct astDetailView: View {
                 Image(astDescAndImageNameObject.imageName)
                     .resizable()
                     .scaledToFit()
+                    .glur(radius: 8.0, // The total radius of the blur effect when fully applied.
+                          offset: 0.6, // The distance from the view's edge to where the effect begins, relative to the view's size.
+                          interpolation: 0.7, // The distance from the offset to where the effect is fully applied, relative to the view's size.
+                          direction: .down, // The direction in which the effect is applied.
+                          noise: 0.3, // The amount of noise that should be applied to the view.
+                          drawingGroup: true // Whether or not to pre-render the modified view with `drawingGroup()`.
+                    )
                     .ignoresSafeArea(edges: .top)
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                     .padding(.bottom)
+                    
                 Text("CodeName \(astronautName)")
                     .padding()
                     .font(.title)
@@ -42,8 +51,11 @@ struct astDetailView: View {
                     .padding(.vertical, 3)
             }
             
+          
         }
+        
     }
+        
     
     
     
