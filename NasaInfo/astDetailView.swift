@@ -18,10 +18,31 @@ struct astDetailView: View {
     }
     var astDescAndImageNameObject : astDescAndImageNameStructure
     
+    
+    
+    
+    
     var body: some View {
-        Image(astDescAndImageNameObject.imageName)
-        Text(astDescAndImageNameObject.description)
+        
+        ScrollView{
+            VStack{
+                Image(astDescAndImageNameObject.imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .ignoresSafeArea(edges: .top)
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                Text(astDescAndImageNameObject.description)
+            }
+            
+        }
     }
+    
+    
+    
+    
+    
+    
+    
     
     init(name: String, asIn: [String : Astronaut]){
         astronautName = name
