@@ -61,10 +61,20 @@ struct missionView: View {
                     label:
                         {
                             VStack{
-                                Text("\(k.name) \(k.role) >")
-                                    .foregroundStyle(.primary.opacity(0.7))
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 3)
+                                Label{
+                                    Text("\(k.name) \(k.role)")
+                                        
+                                }
+                                icon: {
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                }
+                                
+                                .foregroundStyle(.primary.opacity(0.7))
+                                .fontWidth(.condensed)
+                                .padding(.horizontal)
+                                .padding(.vertical, 3)
+                                
                             }
                         }
                         
