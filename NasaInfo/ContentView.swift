@@ -37,8 +37,8 @@ var body: some View{
                                 .padding()
                                 .frame(maxWidth: .infinity)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 24)
-                                        .stroke(Color.primary, lineWidth: 0.2)
+                                    RoundedRectangle(cornerRadius: 29)
+                                        .stroke(Color.primary.opacity(0.4), lineWidth: 0.9)
                                 )
                         }
                     }

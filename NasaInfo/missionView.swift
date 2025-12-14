@@ -33,22 +33,48 @@ struct missionView: View {
                     .padding()
                     .font(.title)
                     .fontWidth(.expanded)
+                
+//                    .frame(maxWidth: .infinity, maxHeight: 45 ,alignment: .leading)
+//                    .glassEffect()
+//                will see you some other day
                 Text(missionInstance.description)
                     .foregroundStyle(.primary.opacity(0.7))
                     .padding()
-                
-                Text("Crew and Roles")
-                    .padding()
-                    .font(.title)
-                    .fontWidth(.expanded)
-                ForEach(crewMembers) {
-                    k in
-                    Text("\(k.name)")
-                        .foregroundStyle(.primary.opacity(0.7))
-                        .padding()
+            }
+
+
+                VStack(alignment: .leading) {
+                    Text("Crew and Roles")
+                        .padding([.top, .horizontal])
+                        .font(.title)
+                        .fontWidth(.expanded)
+                        
+                    Divider()
+                    
+                    ForEach(crewMembers) {
+                        k in
+                        NavigationLink() {
+                            astDetailView()
+                        }
+                    label:
+                        {
+                            VStack{
+                                Text("\(k.name) \(k.role) >")
+                                    .foregroundStyle(.primary.opacity(0.7))
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 3)
+                            }
+                        }
+                        
+                    }
                 }
+                .padding(.bottom)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+               
                 
-            }.padding(.horizontal, 3)
+            
         }
     }
     
