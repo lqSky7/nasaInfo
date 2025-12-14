@@ -11,11 +11,13 @@ struct missionView: View {
     let missionInstance : misson
     struct crewStruct : Identifiable {
         var id = UUID()
+        let shortId : String
         let name : String
         let role : String
     }
-    var crewMembers : [crewStruct]
     
+    var crewMembers : [crewStruct]
+    var asIn : [String : Astronaut]
     
     var body: some View {
         ScrollView{
@@ -36,7 +38,7 @@ struct missionView: View {
                 
 //                    .frame(maxWidth: .infinity, maxHeight: 45 ,alignment: .leading)
 //                    .glassEffect()
-//                will see you some other day
+//                     will see you some other day
                 Text(missionInstance.description)
                     .foregroundStyle(.primary.opacity(0.7))
                     .padding()
@@ -54,7 +56,7 @@ struct missionView: View {
                     ForEach(crewMembers) {
                         k in
                         NavigationLink() {
-                            astDetailView()
+                            astDetailView(name: k.shortId, asIn : self.asIn)
                         }
                     label:
                         {
@@ -79,17 +81,17 @@ struct missionView: View {
     }
     
     init(mi : misson, asIn : [String : Astronaut]) {
+        self.asIn = asIn
         self.missionInstance = mi
         self.crewMembers = mi.crew.map {
             member in
             if let astData = asIn[member.name] {
-                return crewStruct(name: astData.name, role: member.role)
+                return crewStruct(shortId: member.name, name: astData.name, role: member.role)
             }
             else {
                 fatalError("Failed to find \(member.name) in app data")
             }
         }
-        
     }
 }
 

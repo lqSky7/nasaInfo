@@ -8,11 +8,33 @@
 import SwiftUI
 
 struct astDetailView: View {
+    let astronautName : String
+//    let asIn : [String:Astronaut] // this doesn't really need to be stored tbf
+    
+    struct astDescAndImageNameStructure : Identifiable{
+        var id = UUID()
+        var imageName : String
+        var description : String
+    }
+    var astDescAndImageNameObject : astDescAndImageNameStructure
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image(astDescAndImageNameObject.imageName)
+        Text(astDescAndImageNameObject.description)
+    }
+    
+    init(name: String, asIn: [String : Astronaut]){
+        astronautName = name
+        if let requiredAstronaut = asIn[astronautName] {
+            astDescAndImageNameObject = astDescAndImageNameStructure(imageName: requiredAstronaut.id, description: requiredAstronaut.description)
+        } else {
+            fatalError("\(astronautName) named ast not found in appdata")
+        }
+        
     }
 }
 
 #Preview {
-    astDetailView()
+    let checki : [String: Astronaut] = Bundle.main.getDataFromBundle(filename: "ast.json")
+    astDetailView(name: "duke", asIn: checki)
 }
