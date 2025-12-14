@@ -8,13 +8,14 @@
 import Foundation
 
 struct misson : Identifiable, Codable {
-    struct crewrole : Codable {
+    struct crew : Codable {
         var name: String
         var role: String
     }
+    
     var id : Int
     var description: String
-    var crew : [crewrole]
+    var crew : [crew]
     var launchDate: Date?
     
     var displayName : String { "Apollo \(id)" }
