@@ -25,13 +25,21 @@ struct astDetailView: View {
     var body: some View {
         
         ScrollView{
-            VStack{
+            VStack(alignment: .leading){
                 Image(astDescAndImageNameObject.imageName)
                     .resizable()
                     .scaledToFit()
                     .ignoresSafeArea(edges: .top)
                     .clipShape(RoundedRectangle(cornerRadius: 24))
+                    .padding(.bottom)
+                Text("CodeName \(astronautName)")
+                    .padding()
+                    .font(.title)
+                    .fontWidth(.expanded)
                 Text(astDescAndImageNameObject.description)
+                    .foregroundStyle(.primary.opacity(0.7))
+                    .padding(.horizontal)
+                    .padding(.vertical, 3)
             }
             
         }
