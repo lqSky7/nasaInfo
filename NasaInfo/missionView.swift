@@ -14,6 +14,7 @@ struct missionView: View {
         let name : String
         let role : String
     }
+    }
     
     var crewMembers : [crewStruct]
     var asIn : [String : Astronaut]
